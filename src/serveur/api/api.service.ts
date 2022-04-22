@@ -5,7 +5,6 @@ export const sendJSON = async () => {
     include: {TrendLive: true}
   })
 }
-
 export const sendJSONById = async (id: string) => {
   return await prisma.trend.findMany({
     where: {Id: Number(id)},

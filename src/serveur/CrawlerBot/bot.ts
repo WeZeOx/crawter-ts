@@ -19,8 +19,7 @@ import {inBD} from './inBD'
     })
   })
   
-  const newUrl = url.filter((item, pos) => url.indexOf(item) === pos).slice(0, 4)
-  console.log(newUrl)
+  const newUrl = url.filter((item, pos) => url.indexOf(item) === pos)
   
   const promises = newUrl.map(async (item) => {
     const newPage = await browser.newPage();
@@ -59,10 +58,9 @@ import {inBD} from './inBD'
     await newPage.close()
     return [spec, name, tag.join(','), newSpecTop, newNameTop]
   })
-  
   const result = await Promise.all(promises)
-  console.log(result)
-  await inJson(result)
-  await inBD()
+  
+  const json = inJson(result)
+  await inBD(json).then((r: string) => console.log(r))
   await browser.close()
 })();

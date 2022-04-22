@@ -1,7 +1,7 @@
 import fs from "fs";
 
 
-export const inJson = async (arg: (string | (string | null)[] | null)[][]) => {
+export const inJson = (arg: (string | (string | null)[] | null)[][]) => {
   let twitchTrendArray: {}[] = []
   let idx = 0
   const regexFollow = /(\s|\b| )followers/g
@@ -26,5 +26,5 @@ export const inJson = async (arg: (string | (string | null)[] | null)[][]) => {
     if (err) throw err;
     else console.log('File is write successfully.');
   });
-  return 'finish'
+  return twitchTrendArray
 }

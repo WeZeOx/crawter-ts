@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction} from "express";
+import { Request, Response, NextFunction } from "express";
 
 export class Error {
   code
@@ -10,7 +10,7 @@ export class Error {
 }
 
 export const checkIdMiddleware = (req: Request, res: Response, next: NextFunction) => {
-  const {id} = req.params
+  const { id } = req.params
   if (!id || !Number.isInteger(+id)) {
     next(new Error(400, "invalid id"))
     return
@@ -18,6 +18,6 @@ export const checkIdMiddleware = (req: Request, res: Response, next: NextFunctio
   next()
 }
 
-export const errorHandlerMiddleware = (error: Error, req: Request, res: Response) => {
+export const errorHandlerMiddleware = (error: Error, req: Request, res: Response, next: NextFunction) => {
   res.status(error.code ?? 500).send(error.message ?? "internal server error")
 }

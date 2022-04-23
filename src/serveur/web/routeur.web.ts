@@ -1,5 +1,5 @@
 import express from "express";
-import {homePage} from "./web.controller";
+import { homeId, homePage } from "./web.controller";
 
 const router = express.Router()
 router.get('/file/:id', (req, res) => {
@@ -7,5 +7,6 @@ router.get('/file/:id', (req, res) => {
 })
 
 router.get('/home', homePage)
+router.get('/trend/:id', homeId)
 
 export default router

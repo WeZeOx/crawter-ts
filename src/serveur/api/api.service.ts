@@ -1,4 +1,4 @@
-import {prisma} from "../CrawlerBot/inBD";
+import {prisma} from "../CrawlerBot/bot.writebdd";
 
 export const sendJSON = async () => {
   return await prisma.trend.findMany({

@@ -1,7 +1,7 @@
 {
   "name": "puppeteer",
   "version": "1.0.0",
-  "main": "src/serveur/CrawlerBot/bot.ts",
+  "main": "src/serveur/CrawlerBot/bot.main.ts",
   "scripts": {
     "dev": "nodemon src/serveur/index.ts"
   },
@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^3.12.0",
+    "axios": "^0.26.1",
     "express": "^4.17.3",
     "nodemon": "^2.0.15",
     "puppeteer": "^13.5.1"

@@ -1,7 +1,7 @@
 import express from 'express';
 import {errorHandlerMiddleware} from "./api/api.middleware";
-import apiRouter from "./api/routeur";
-import webRouer from './web/routeur'
+import apiRouter from "./api/routeur.api";
+import webRouer from './web/routeur.web'
 
 const app = express();
 

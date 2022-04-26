@@ -1,3 +1,122 @@
-.test {
-    height: 100px;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background: #F7B299;
+}
+
+::placeholder {
+    color: white;
+    opacity: 1;
+}
+
+.card {
+    border-radius: 25px;
+    transition: transform 1s ease-in-out;
+    z-index: 1000;
+    background-color: #E3754D;
+    padding-bottom: 50px;
+}
+
+
+.imageMovie {
+    margin: 11.5%;
+    border-radius: 25px;
+    width: 79%;
+}
+
+.hide {
+    display: none;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.category {
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+header {
+    background-color: #756E6C;
+    width: 100%;
+    height: 75px;
+    display: flex;
+    justify-content: space-around;
+}
+
+#containerLogo {
+    margin-left: 10px;
+    background-color: #756E6C;
+    height: 100%;
+}
+
+#containerInputSearch {
+    background: #756E6C;
+    display: flex;
+    align-items: center;
+}
+
+#inputSearch {
+    padding: 5px;
+    outline: black 1px solid;
+    border: none;
+    color: white;
+    height: 45px;
+    background-color: #756E6C;
+    width: 100%;
+}
+
+#svg_null {
+    height: 100%;
+}
+
+#containerCard {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 2rem;
+    place-items: center;
+}
+
+img {
+    border-radius: 25px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#containerList {
+    display: flex;
+    gap: 15%;
+    background-color: #756E6C;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 3vw;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400;
+}
+
+.top {
+    color: white;
+    font-size: 1.5rem;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+
+#containerList li {
+    background-color: #756E6C;
+    list-style: none;
 }

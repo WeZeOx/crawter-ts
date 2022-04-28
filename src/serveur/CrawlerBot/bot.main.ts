@@ -68,24 +68,30 @@ import { botWriteBdd } from './bot.writebdd'
     const tag = await fetchMultipleData('div.InjectLayout-sc-588ddc-0.jNvUhD div.ScTagContent-sc-xzp4i-1.gONNWj')
     const nameTop = await fetchMultipleData('h3.CoreText-sc-cpl358-0.ilJsSZ')
     const specTop = await fetchMultipleData('div.ScMediaCardStatWrapper-sc-1ncw7wk-0.jluyAA.tw-media-card-stat')
-
+    
+    
+    const test1 = await fetchMultipleData('a.ScCoreLink-sc-udwpw5-0.jswAtS.ScCoreLink-sc-ybxm10-0.dnhAtW.tw-link')
+    
+    const test2 = await newPage.$eval('a.ScCoreLink-sc-udwpw5-0.jswAtS.ScCoreLink-sc-ybxm10-0.dnhAtW.tw-link', (el: Element) => {
+      return el
+    })
+    
+    console.log(test1.slice(5, 10))
+    console.log(test2)
     
     const regexView = /(\s|\b| )spectateurs/g
     
     const newSpecTop = specTop.slice(1, 5).join('.').replaceAll(regexView, '').replaceAll(' ', '')
-    
     const newNameTop = nameTop.slice(1, 5).join('\n')
-    
-    const newImgTrendTop = imgTrendTop.slice(0, 5)
-    
     const newTag = tag.join(',')
     await newPage.close()
     
-    return [spec, name, newTag, newSpecTop, newNameTop, img.slice(2, 6).join(','), newImgTrendTop]
+    return [spec, name, newTag, newSpecTop, newNameTop, img.slice(2, 6).join(','), imgTrendTop]
   })
   const result = await Promise.all(promises)
   
   const json = botWriteJson(result)
   await botWriteBdd(json).then((r: string) => console.log(r))
+  
   await browser.close()
 })();

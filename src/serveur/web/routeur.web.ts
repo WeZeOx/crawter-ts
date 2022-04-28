@@ -1,12 +1,21 @@
 import express from "express";
-import { homeId, homePage } from "./web.controller";
+import { trendPageId, trendPage } from "./web.controller";
 
 const router = express.Router()
-router.get('/file/:id', (req, res) => {
-  res.sendFile(req.params.id, { root: './src/client/Home' })
+
+router.get('/trend/:id', (req, res) => {
+  res.sendFile(req.params.id, { root: './src/client/Trend' })
 })
 
-router.get('/home', homePage)
-router.get('/trend/:id', homeId)
+router.get('/trendId/:id', (req, res) => {
+  res.sendFile(req.params.id, { root: './src/client/TrendId' })
+})
+
+router.get('/home', trendPage)
+router.get('/home/:id', trendPageId)
+
+router.get('*', (req, res) => {
+  res.send('tg')
+})
 
 export default router

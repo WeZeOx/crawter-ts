@@ -1,7 +1,13 @@
 import express from 'express';
+import schedule from 'node-schedule'
+
 import {errorHandlerMiddleware} from "./api/api.middleware";
 import apiRouter from "./api/routeur.api";
 import webRouer from './web/routeur.web'
+
+// schedule.scheduleJob('*/1 * * * *', () => {
+//   console.log('The answer to life, the universe, and everything!');
+// });
 
 const app = express();
 

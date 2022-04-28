@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,16 +10,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&family=Ubuntu:wght@300&display=swap"
           rel="stylesheet">
 
-    <link rel="stylesheet" href="file/Home.css">
+    <link rel="stylesheet" href="../trendId/TrendId.css">
     <title>Trendify</title>
 </head>
 <body>
-
 <header>
     <div id="containerLogo">
+        <a href="/home">
         <svg viewBox="0 0 500 500" version="1.1" id="svg_null">
             <g id="root" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                <rect id="background.accent" fill="#756E6C" x="0" y="0" width="500" height="500"></rect>
+                <rect id="background.accent" fill="#181c24" x="0" y="0" width="500" height="500"></rect>
                 <path d="M249.5 390c77.596 0 140.5 -62.904 140.5 -140.5c0 -13.19 -1.818 -26.141 -5.365 -38.586l-3.847 1.096c3.445 12.09 5.212 24.671 5.212 37.49c0 75.387 -61.113 136.5 -136.5 136.5l0 4zm125.732 -203.272l-3.578 1.79c-22.96 -45.902 -69.907 -75.518 -122.154 -75.518c-34.585 0 -67.148 12.91 -92.143 35.792l-2.701 -2.95c25.725 -23.55 59.25 -36.842 94.844 -36.842c53.777 0 102.1 30.484 125.732 77.728zm-238.03 -21.678l3.196 2.407c-17.682 23.476 -27.398 52.02 -27.398 82.043c0 57.005 35.268 107.397 87.608 127.483l-1.433 3.735c-53.874 -20.675 -90.175 -72.543 -90.175 -131.218c0 -30.898 10.003 -60.286 28.202 -84.45zm86.856 222.652c8.33 1.524 16.829 2.297 25.425 2.298l0 -4c-8.354 -0.001 -16.612 -0.752 -24.706 -2.233l-0.72 3.935z"
                       id="shape.primary" fill="#eeeeee" fill-rule="nonzero"></path>
                 <path d="M249.5 373c-68.207 0 -123.5 -55.293 -123.5 -123.5c0 -68.207 55.293 -123.5 123.5 -123.5c68.207 0 123.5 55.293 123.5 123.5c0 68.207 -55.293 123.5 -123.5 123.5zm0 -4c65.998 0 119.5 -53.502 119.5 -119.5c0 -65.998 -53.502 -119.5 -119.5 -119.5c-65.998 0 -119.5 53.502 -119.5 119.5c0 65.998 53.502 119.5 119.5 119.5z"
@@ -41,21 +41,22 @@
                 </svg>
             </g>
         </svg>
+        </a>
     </div>
 
     <label id="containerInputSearch">
         <input id="inputSearch" placeholder="Search Trend..." type="search">
     </label>
 
-    <ul id="containerList">
-        <li>Credit</li>
-        <li>Home</li>
-        <li>Trend</li>
-    </ul>
+    <span id="containerList">Trend With Trendify</span>
 </header>
 
-<div id="containerCard"></div>
 
-<script type="module" src="file/Home.js"></script>
+<div id="containerTrend"></div>
+
+<div id="containerLive"></div>
+
+
+<script type="module" src="../trendId/TrendId.js"></script>
 </body>
 </html>

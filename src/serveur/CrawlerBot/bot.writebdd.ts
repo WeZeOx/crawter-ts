@@ -41,6 +41,7 @@ export const botWriteBdd = async (trend: any) => {
         Category: item.Category ?? "No Category provided",
         Tag: item.Tag ?? "No Tag provided",
         TrendTop: item.TrendTop ?? "No Image Provided",
+        
         TrendLive: {
           create: {
             Id: item.Id ?? 404,

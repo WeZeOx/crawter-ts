@@ -1,0 +1,180 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background: #141414d6;
+}
+
+::placeholder {
+    color: white;
+    opacity: 1;
+}
+
+header {
+    background-color: #181c24;
+    width: 100%;
+    height: 75px;
+    display: flex;
+    justify-content: space-around;
+}
+
+#containerLogo {
+    margin-left: 10px;
+    background-color: #181c24;
+    height: 100%;
+}
+
+#containerInputSearch {
+    width: 22%;
+    background: #181c24;
+    display: flex;
+    align-items: center;
+}
+
+#inputSearch {
+    padding: 5px;
+    outline: white 1px solid;
+    border: none;
+    color: white;
+    height: 45px;
+    background-color: #181c24;
+    width: 100%;
+}
+
+#svg_null {
+    height: 100%;
+}
+
+#containerList {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 3vw;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400;
+}
+
+#containerImg {
+    margin-top: 2%;
+    display: flex;
+    justify-content: center;
+}
+
+#trendImg {
+    max-width: 37vmax;
+    border-radius: 25px;
+    transition: transform 1s ease-out;
+}
+
+#trendImg:hover {
+    transform: scale(1.05);
+}
+
+#trendName {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400;
+    margin: 50px 10px;
+    color: white;
+    font-size: 8vmin;
+    display: flex;
+    justify-content: center;
+}
+
+#side {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+    gap: 10%;
+    row-gap: 45px;
+    color: white;
+    font-size: 8vmin;
+}
+
+#trendLive {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400;
+    margin: 100px 10px;
+    color: white;
+    font-size: 8vmin;
+    display: flex;
+    justify-content: center;
+}
+
+.bottom {
+    overflow: hidden;
+    flex-direction: column;
+    color: white;
+    display: flex;
+    justify-content: center;
+    z-index: 100;
+    width: 285px;
+    border-radius: 25px;
+    height: 411px;
+    transition: all 1s ease-in-out;
+    position: relative;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 5%, #000000 100%);
+}
+
+#trendTag {
+    text-align: center;
+}
+
+.bottom:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
+    opacity: 0;
+    transition: all 500ms ease-in-out;
+}
+
+.bottom:hover:after {
+    opacity: 1;
+}
+
+#containerLive {
+    grid-row-gap: 25px;
+    padding-bottom: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    place-items: center;
+
+}
+
+.trendLiveName {
+    text-align: center;
+    z-index: 10;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 10px 10px 20px;
+}
+
+.trendLiveSpec {
+    padding-bottom: 20px;
+    text-align: center;
+    z-index: 10;
+    width: 100%;
+    font-size: 1.5rem;
+}
+
+.live {
+    border-radius: 25px;
+}

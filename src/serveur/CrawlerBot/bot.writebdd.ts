@@ -13,6 +13,7 @@ export type objJson = {
   ImgTopLive?: string
   TrendTop?: string
   ImgTop?: string,
+  NameTopStream?: string
 }
 
 export const botWriteBdd = async (trend: objJson[]) => {
@@ -35,7 +36,8 @@ export const botWriteBdd = async (trend: objJson[]) => {
             SpecTop: item.SpecTop ?? "No Views provided",
             NameTop: item.NameTop ?? "No Follow provided",
             Img: item.ImgTop ?? "No Image Set",
-            UrlTopLive: item.ImgTopLive ?? "No Url provided"
+            UrlTopLive: item.ImgTopLive ?? "No Url provided",
+            NameTopLive: item.NameTopStream ?? "No Name provided"
           }
         }
       }

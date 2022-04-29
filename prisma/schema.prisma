@@ -15,6 +15,7 @@ model TrendLive {
  SpecTop String
  NameTop String
  Img String
+ UrlTopLive String
  Trend Trend @relation(fields: [TrendId], references: [Id], onUpdate: Cascade, onDelete: Cascade)
  TrendId Int
 }

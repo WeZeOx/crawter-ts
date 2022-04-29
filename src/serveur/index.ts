@@ -10,11 +10,14 @@ import webRouer from './web/routeur.web'
 // });
 
 const app = express();
-
 app.use(express.json());
 
 app.use("/api", apiRouter)
 app.use("/", webRouer)
+
+app.get('*', (req, res) => {
+  res.sendFile('NotFound.html', { root: './src/client/NotFound' })
+})
 
 app.use(errorHandlerMiddleware)
 

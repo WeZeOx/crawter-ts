@@ -18,6 +18,15 @@ export const checkIdMiddleware = (req: Request, res: Response, next: NextFunctio
   next()
 }
 
+export const checkHeader = (req: Request, res: Response, next: NextFunction) => {
+  console.log()
+  if (req.headers['admin'] === 'true') {
+    next()
+    return
+  }
+  next(new Error(400, "invalid header"))
+}
+
 export const errorHandlerMiddleware = (error: Error, req: Request, res: Response, next: NextFunction) => {
   res.status(error.code ?? 500).send(error.message ?? "internal server error")
 }

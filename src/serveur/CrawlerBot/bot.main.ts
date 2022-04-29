@@ -30,22 +30,29 @@ import { botWriteBdd } from './bot.writebdd'
   })
   
   const imgTrendTop = await page.$$eval('.ScAspectRatio-sc-1sw3lwy-1.kPofwJ.tw-aspect img', (el: Element[]) => {
-    return el.map((item) => {
+    return el.map((item: Element) => {
       return item.getAttribute('src')
     })
   })
   
-  const newUrl = url.filter((item, pos) => url.indexOf(item) === pos).slice(0, 5)
+  const newUrl = url.filter((item:string, pos: number) => url.indexOf(item) === pos)
   
-  const promises = newUrl.map(async (item) => {
+  const promises = newUrl.map(async (item: string) => {
+    
     const newPage = await browser.newPage();
+    
+   //  if (index === 5) {
+   //    console.log(index)
+   // }
+   //  await newPage.waitForTimeout(5000)
+    
     newPage.setDefaultTimeout(0)
     newPage.setDefaultTimeout(0)
     await newPage.goto(item, { waitUntil: 'networkidle2' });
     
     const fetchMultipleData = async (path: string) => {
       return await newPage.$$eval(path, (el: Element[]) => {
-        return el.map((item) => {
+        return el.map((item: Element) => {
           return item.textContent
         })
       })
@@ -68,25 +75,28 @@ import { botWriteBdd } from './bot.writebdd'
     const tag = await fetchMultipleData('div.InjectLayout-sc-588ddc-0.jNvUhD div.ScTagContent-sc-xzp4i-1.gONNWj')
     const nameTop = await fetchMultipleData('h3.CoreText-sc-cpl358-0.ilJsSZ')
     const specTop = await fetchMultipleData('div.ScMediaCardStatWrapper-sc-1ncw7wk-0.jluyAA.tw-media-card-stat')
+    const nameStreamTop = await fetchMultipleData('p.CoreText-sc-cpl358-0.eyuUlK')
     
+    console.log(nameStreamTop.slice(1, 5))
     
-    const test1 = await fetchMultipleData('a.ScCoreLink-sc-udwpw5-0.jswAtS.ScCoreLink-sc-ybxm10-0.dnhAtW.tw-link')
-    
-    const test2 = await newPage.$eval('a.ScCoreLink-sc-udwpw5-0.jswAtS.ScCoreLink-sc-ybxm10-0.dnhAtW.tw-link', (el: Element) => {
-      return el
+    const urlTopLive = await newPage.$$eval("a.ScCoreLink-sc-udwpw5-0.jswAtS.ScCoreLink-sc-ybxm10-0.dnhAtW.tw-link", (el: Element[]) => {
+      return el.map((item: Element) => {
+        return "https://www.twitch.tv" + item.getAttribute('href')
+      })
     })
     
-    console.log(test1.slice(5, 10))
-    console.log(test2)
     
     const regexView = /(\s|\b| )spectateurs/g
     
     const newSpecTop = specTop.slice(1, 5).join('.').replaceAll(regexView, '').replaceAll(' ', '')
     const newNameTop = nameTop.slice(1, 5).join('\n')
+    const newUrlTopLive = urlTopLive.slice(1, 5).join(',')
+    const newNameStreamTop = nameStreamTop.slice(1, 5).join(',')
+    
     const newTag = tag.join(',')
     await newPage.close()
     
-    return [spec, name, newTag, newSpecTop, newNameTop, img.slice(2, 6).join(','), imgTrendTop]
+    return [spec, name, newTag, newSpecTop, newNameTop, img.slice(2, 6).join(','), imgTrendTop, newUrlTopLive, newNameStreamTop]
   })
   const result = await Promise.all(promises)
   

@@ -1,10 +1,9 @@
 import express from "express";
-
-const router = express.Router()
 import { fetchData, fetchId } from "./api.controller";
-import { checkIdMiddleware } from "./api.middleware";
+import { checkIdMiddleware, checkHeader } from "./api.middleware";
+const router = express.Router()
 
-router.get('/', fetchData)
-router.get('/:id', checkIdMiddleware, fetchId)
+router.get('/', checkHeader, fetchData)
+router.get('/:id', checkIdMiddleware, checkHeader, fetchId)
 
 export default router

@@ -1,0 +1,63 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primColor: #dcdcdc;
+    --secoColor: #555555;
+    --cornerRad: 4px;
+}
+
+html {
+    background: #141414d6;
+}
+
+body {
+    /*background-color: var(--primColor);*/
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+
+#choose {
+    display: flex;
+    height: 50vh;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 4.5vmax;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400;
+}
+
+.containerImg {
+    height: 100%;
+    width: 50%;
+    margin: 0;
+    transition: transform 500ms ease-out;
+}
+
+.containerImg .img {
+    border-radius: 25px;
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    place-items: center;
+    grid-row-gap: 50px;
+}
+.container > * {
+    display: flex;
+    justify-content: center;
+}
+
+.containerImg:hover {
+    transform: scale(1.05);
+}

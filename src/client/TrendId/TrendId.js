@@ -1,9 +1,16 @@
-const Id = window.location.pathname.split('/')[2]
+const method = {
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json',
+    'admin': 'true'
+  }
+}
+const Id = window.location.pathname.split('/')[3]
 const containerTrend = document.getElementById('containerTrend')
 const containerLive = document.getElementById('containerLive')
 
 const fetchData = () => {
-  return fetch(`http://localhost:3000/api/${Id}`)
+  return fetch(`http://localhost:3000/api/${Id}`, method)
     .then((r) => r.json())
     .catch((err) => console.log(err))
 }
@@ -38,11 +45,15 @@ const top4Live = () => {
     const spec = data[0].TrendLive[0].SpecTop.split('.')[index]
     const label = data[0].TrendLive[0].Img.split(',')[index]
 
+    const link = data[0].TrendLive[0].UrlTopLive.split(',')[index]
+
     const content = `
     <div class="bottom">
-         <span class="trendLiveName">${item}</span>
-        <span class="trendLiveSpec">${spec}</span>
+         <span class="trendLiveName">Title of the live : ${item}</span>
+        <span class="trendLiveSpec">Number of viewvers : ${spec}</span>
+        <a class="trendurl" href="${link}">Link to his stream</a>     
     </div>`
+
     let htmlObject = document.createElement('div');
     htmlObject.className = "live"
     htmlObject.innerHTML = content;

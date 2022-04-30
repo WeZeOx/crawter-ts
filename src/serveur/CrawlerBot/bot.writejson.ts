@@ -13,12 +13,12 @@ export const botWriteJson = (arg: (string | (string | null)[] | null)[][]) => {
       "Follow": arg[idx][0]?.[1]?.replace(regexFollow, '').replace(' ', ''),
       "Category": arg[idx][1],
       "Tag": arg[idx][2],
-      "SpecTop": arg?.[idx][3],
+      "SpecTop": arg[idx][3],
       "NameTop": arg[idx][4],
       "ImgTop": arg[idx][5],
-      "TrendTop": arg[idx]?.[6]?.[idx],
-      "ImgTopLive": arg[idx]?.[7],
-      "NameTopStream": arg[idx]?.[8]
+      "TrendTop": arg[idx][6]?.[idx],
+      "ImgTopLive": arg[idx][7],
+      "NameTopStream": arg[idx][8]
     })
     idx++
   }

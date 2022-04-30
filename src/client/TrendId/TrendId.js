@@ -44,14 +44,17 @@ const top4Live = () => {
   nameLive.forEach((item, index) => {
     const spec = data[0].TrendLive[0].SpecTop.split('.')[index]
     const label = data[0].TrendLive[0].Img.split(',')[index]
-
     const link = data[0].TrendLive[0].UrlTopLive.split(',')[index]
+    const streamer = data[0].TrendLive[0].NameTopLive.split(',')[index]
 
     const content = `
+    <div class="top">
+        <span class="trendLiveStreamer">Name of the streamer : ${streamer}</span>
+    </div>
     <div class="bottom">
-         <span class="trendLiveName">Title of the live : ${item}</span>
+         <span class="trendLiveName">Title : ${item}</span>
         <span class="trendLiveSpec">Number of viewvers : ${spec}</span>
-        <a class="trendurl" href="${link}">Link to his stream</a>     
+        <a class="trendurl" href="${link}" target="_blank">Link to his stream</a>     
     </div>`
 
     let htmlObject = document.createElement('div');

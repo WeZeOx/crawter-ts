@@ -1,5 +1,15 @@
+import {test} from "../Trend";
+
+const method = {
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json',
+    'admin': 'true'
+  }
+}
+console.log(test)
 const fetchData = () => {
-  return fetch('http://localhost:3000/api')
+  return fetch('http://localhost:3000/api', method)
     .then((r) => r.json())
     .catch((err) => console.log(err))
 }

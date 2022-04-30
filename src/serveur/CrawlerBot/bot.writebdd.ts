@@ -17,8 +17,8 @@ export type objJson = {
 }
 
 export const botWriteBdd = async (trend: objJson[]) => {
-  await prisma.trend.deleteMany({})
-  await prisma.trendLive.deleteMany({})
+  await prisma.trend.deleteMany()
+  // await prisma.trendLive.deleteMany()
   
   trend.map(async (item: objJson, index: number) => {
     if (index === trend.length - 1) return

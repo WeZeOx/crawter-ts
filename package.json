@@ -2,6 +2,7 @@
   "name": "puppeteer",
   "version": "1.0.0",
   "main": "src/serveur/CrawlerBot/bot.main.ts",
+
   "scripts": {
     "dev": "ts-node src/serveur/CrawlerBot/bot.main.ts && nodemon src/serveur/index.ts",
     "site": "nodemon src/serveur/index.ts"

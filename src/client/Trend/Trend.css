@@ -15,7 +15,6 @@ html {
 }
 
 body {
-    /*background-color: var(--primColor);*/
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
 }
@@ -195,4 +194,34 @@ header {
     justify-content: center;
     align-items: flex-end;
     height: 50px;
+}
+#subnav {
+    height: 50px;
+    width: 100%;
+    background-color: #4d4646;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+.containerList {
+    list-style: none;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10%;
+    font-size: 2.5vmax;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400;
+}
+
+@media only screen and (max-width : 725px) {
+    .containerList {
+        font-size: 5vmax;
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: 400;
+    }
 }

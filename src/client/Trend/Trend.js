@@ -36,8 +36,8 @@ const cardData = data.map((item, index) => {
   let htmlObject = document.createElement('div');
   htmlObject.className = "card"
   htmlObject.style.backgroundImage = `url(${img})`
-
   htmlObject.innerHTML = content;
+
   containerCard.appendChild(htmlObject)
   return {category: category.toUpperCase(), element: htmlObject, id: index}
 })

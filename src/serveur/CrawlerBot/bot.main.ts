@@ -10,7 +10,7 @@ import { botWriteBdd } from './bot.writebdd'
   });
   
   const page = await browser.newPage();
-  //await page.goto('https://www.twitch.tv/directory?sort=VIEWER_COUNT', { waitUntil: 'networkidle2' });
+  // await page.goto('https://www.twitch.tv/directory?sort=VIEWER_COUNT', { waitUntil: 'networkidle2' });
   
   await page.goto('https://www.twitch.tv/', { waitUntil: 'networkidle2' });
   await page.waitForTimeout(2000)
@@ -38,18 +38,11 @@ import { botWriteBdd } from './bot.writebdd'
   const newUrl = url.filter((item:string, pos: number) => url.indexOf(item) === pos)
   
   const promises = newUrl.map(async (item: string) => {
-    
     const newPage = await browser.newPage();
-    
-   //  if (index === 5) {
-   //    console.log(index)
-   // }
-   //  await newPage.waitForTimeout(5000)
-    
     newPage.setDefaultTimeout(0)
     newPage.setDefaultTimeout(0)
     await newPage.goto(item, { waitUntil: 'networkidle2' });
-    
+
     const fetchMultipleData = async (path: string) => {
       return await newPage.$$eval(path, (el: Element[]) => {
         return el.map((item: Element) => {
@@ -57,27 +50,25 @@ import { botWriteBdd } from './bot.writebdd'
         })
       })
     }
-    
+
     const spec = await newPage.$$eval('div.Layout-sc-nxg1ff-0.pqFci.InjectLayout-sc-588ddc-0', (el: Element[]) => {
       return [el[0].textContent, el[1].textContent]
     })
-    
+
     const name = await newPage.$$eval('h1.CoreText-sc-cpl358-0.ScTitleText-sc-1gsen4-0.kGpodG.gasGNr.tw-title', (el: Element[]) => {
       return el[0].textContent
     })
-    
+
     const img = await newPage.$$eval('.tw-image:not(.InjectLayout-sc-588ddc-0.iDjrEF.tw-image.tw-image-avatar)', (el: Element[]) => {
       return el.map((item) => {
         return [item.getAttribute('src')]
       })
     })
-    
+
     const tag = await fetchMultipleData('div.InjectLayout-sc-588ddc-0.jNvUhD div.ScTagContent-sc-xzp4i-1.gONNWj')
     const nameTop = await fetchMultipleData('h3.CoreText-sc-cpl358-0.ilJsSZ')
     const specTop = await fetchMultipleData('div.ScMediaCardStatWrapper-sc-1ncw7wk-0.jluyAA.tw-media-card-stat')
     const nameStreamTop = await fetchMultipleData('p.CoreText-sc-cpl358-0.eyuUlK')
-    
-    console.log(nameStreamTop.slice(1, 5))
     
     const urlTopLive = await newPage.$$eval("a.ScCoreLink-sc-udwpw5-0.jswAtS.ScCoreLink-sc-ybxm10-0.dnhAtW.tw-link", (el: Element[]) => {
       return el.map((item: Element) => {
@@ -85,17 +76,16 @@ import { botWriteBdd } from './bot.writebdd'
       })
     })
     
-    
     const regexView = /(\s|\b| )spectateurs/g
-    
+
     const newSpecTop = specTop.slice(1, 5).join('.').replaceAll(regexView, '').replaceAll(' ', '')
     const newNameTop = nameTop.slice(1, 5).join('\n')
     const newUrlTopLive = urlTopLive.slice(1, 5).join(',')
     const newNameStreamTop = nameStreamTop.slice(1, 5).join(',')
-    
+
     const newTag = tag.join(',')
     await newPage.close()
-    
+
     return [spec, name, newTag, newSpecTop, newNameTop, img.slice(2, 6).join(','), imgTrendTop, newUrlTopLive, newNameStreamTop]
   })
   const result = await Promise.all(promises)

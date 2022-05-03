@@ -1,4 +1,5 @@
 import {prisma} from "../CrawlerBot/bot.writebdd";
+import trend from '../../data/tendanceTwitch.json'
 
 export const sendJSON = async () => {
   return await prisma.trend.findMany({
@@ -10,4 +11,8 @@ export const sendJSONById = async (id: string) => {
     where: {Id: Number(id)},
     include: {TrendLive: true}
   })
+}
+
+export const sendDate = () => {
+  return trend.twitchTrendArray[trend.twitchTrendArray.length - 1]
 }

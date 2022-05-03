@@ -6,7 +6,7 @@ const method = {
   }
 }
 
-const fetchData = () => {
+const fetchData = async () => {
   return fetch('http://localhost:3000/api', method)
     .then((r) => r.json())
     .catch((err) => console.log(err))

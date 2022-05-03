@@ -11,6 +11,7 @@
           rel="stylesheet">
 
     <link rel="stylesheet" href="../stats/Stats.css">
+    <link rel="stylesheet" href="../public/NavbarSubnavbar.css">
 
     <title>Trendify</title>
 </head>
@@ -53,16 +54,18 @@
 </header>
 <nav id="subnav">
     <ul class="containerList">
-        <li><a href="/credit">Credit</a></li>
+        <li><a href="/home">Home</a></li>
         <li><a href="/twitch/stats">Stats</a></li>
+        <li><a href="/credit">Credit</a></li>
+<!--        <li><a href="/credit">About</a></li>-->
     </ul>
 </nav>
 
 
 <canvas id="myChart" width="300" height="100" style="margin-top: 50px"></canvas>
+<div id="containerStats"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script type="module" src="../stats/Stats.js"></script>
-
 </body>
 </html>

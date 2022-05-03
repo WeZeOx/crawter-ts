@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client'
+
 export const prisma = new PrismaClient()
 
 export type objJson = {
@@ -16,12 +17,13 @@ export type objJson = {
   NameTopStream?: string
 }
 
+
 export const botWriteBdd = async (trend: objJson[]) => {
   await prisma.trend.deleteMany()
-  // await prisma.trendLive.deleteMany()
   
   trend.map(async (item: objJson, index: number) => {
     if (index === trend.length - 1) return
+    
     await prisma.trend.create({
       data: {
         Id: item.Id ?? 404,

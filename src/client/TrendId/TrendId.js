@@ -15,7 +15,6 @@ const fetchData = () => {
     .catch((err) => console.log(err))
 }
 const data = Object.values(await fetchData())
-
 const nameLive = data[0].TrendLive[0].NameTop.split('\n')
 
 const topPage = () => {

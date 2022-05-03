@@ -1,5 +1,3 @@
-import {test} from "../Trend";
-
 const method = {
   method: 'GET',
   headers: {
@@ -7,55 +5,92 @@ const method = {
     'admin': 'true'
   }
 }
-console.log(test)
 const fetchData = () => {
   return fetch('http://localhost:3000/api', method)
     .then((r) => r.json())
     .catch((err) => console.log(err))
 }
-
 const data = Object.values(await fetchData())
-console.log(data)
+const containerStats = document.getElementById('containerStats')
 
-let x = []
-let y = []
+let xAxis = []
+let yAxis = []
+let count = 0
 
-data.map((item) => {
-  const category = item.Category
+const showStats = () => {
+  count = Math.round(count)
+  let content = `<div class="count">${count}</div>`
 
-  x.push(category)
-  if (item.Views.slice(-1) === 'M') y.push(parseFloat(item.Views.slice(0, -1).replaceAll(',', '.')) * 1000)
-  else y.push(parseFloat(item.Views.slice(0, -1).replaceAll(',', '.')))
-})
+  let htmlObject = document.createElement('div');
+  htmlObject.className = "stats"
+  htmlObject.innerHTML = content;
 
-const data2 = {
-  labels: x,
+  containerStats.append(htmlObject)
+  containerStats.append(htmlObject)
+}
+
+const sortData = () => {
+  data.map((item) => {
+    const viewCategory = parseFloat(item.Views.slice(0, -1).replaceAll(',', '.'))
+    const category = item.Category
+
+    xAxis.push(category)
+
+    if (item.Views.slice(-1) === 'M') {
+      count += viewCategory * 1000
+      yAxis.push(viewCategory * 1000)
+    } else {
+      count += viewCategory
+      yAxis.push(viewCategory)
+    }
+  })
+}
+sortData()
+showStats()
+
+const legend = {
+  labels: xAxis,
   datasets: [{
     label: 'Number of viewers',
+    color: 'rgb(255, 99, 132)',
     borderColor: 'rgb(255, 99, 132)',
     backgroundColor: 'rgb(255, 99, 132)',
-    data: y,
+    data: yAxis,
   }],
 };
 
 const config = {
   type: 'line',
-  data: data2,
+  data: legend,
   options: {
     scales: {
       x: {
+        display: true,
         ticks: {
           color: 'rgb(255, 99, 132)'
         }
       },
       y: {
+        display: true,
+        type: 'logarithmic',
+        min: 0,
         ticks: {
           color: 'rgb(255, 99, 132)'
         }
       },
     },
     plugins: {
+      title: {
+        color: 'rgb(255, 99, 132)',
+        display: true,
+        text: 'Twitch Trend',
+      },
       legend: {
+        display: true,
+        labels: {
+          position: 'right',
+          color: 'rgb(255, 99, 132)'
+        },
         onClick: null
       }
     }

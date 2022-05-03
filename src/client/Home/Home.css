@@ -47,6 +47,7 @@ body {
 }
 
 .container {
+    z-index: 100;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     place-items: center;
@@ -59,4 +60,36 @@ body {
 
 .containerImg:hover {
     transform: scale(1.05);
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    background: black;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+canvas {
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: 1;
+}
+.text-box {
+    z-index: 2;
+    font-size: 60px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 7px;
+    word-spacing: 12px;
+    text-transform: uppercase;
+    color:rgb(238, 238, 238);
+}
+.heading {
+    text-align: center;
 }

@@ -1,7 +1,7 @@
 import fs from "fs";
 import { objJson } from "./bot.writebdd";
 
-export const botWriteJson = (arg: (string | (string | null)[] | null)[][]) => {
+export const botWriteJson = async (arg: (string | (string | null)[] | null)[][]) => {
   let twitchTrendArray: objJson[] = []
   let idx = 0
   const regexFollow = /(\s|\b| )followers/g
@@ -28,9 +28,8 @@ export const botWriteJson = (arg: (string | (string | null)[] | null)[][]) => {
   if (hour.length === 1) hour = '0' + hour
   twitchTrendArray.push({
     "DateLaunch": `${date.getDate()}\/${date.getMonth() + 1}\/${date.getFullYear()} ${hour}:${date.getMinutes()}:${date.getSeconds()}` })
-  fs.writeFile('src/data/tendanceTwitch.json', JSON.stringify({ twitchTrendArray }, null, 2), (err) => {
+  await fs.writeFile('src/data/tendanceTwitch.json', JSON.stringify({ twitchTrendArray }, null, 2), (err) => {
     if (err) throw err;
-    else console.log('File is write successfully.');
   });
   return twitchTrendArray
 }

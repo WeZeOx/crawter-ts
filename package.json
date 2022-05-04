@@ -2,13 +2,11 @@
   "name": "puppeteer",
   "version": "1.0.0",
   "main": "src/serveur/CrawlerBot/bot.main.ts",
+  "nodemonConfig": {
+    "ignore": ["prisma/db.sqlite", "src/data/tendanceTwitch.json"]
+  },
   "scripts": {
-    "dev": "ts-node src/serveur/CrawlerBot/bot.main.ts && nodemon src/serveur/index.ts",
-
-    "devtest": "nodemon src/serveur/index.ts",
-
-    "site": "ts-node src/serveur/index.ts",
-    "bot": "ts-node src/serveur/CrawlerBot/bot.main.ts"
+    "dev": "nodemon src/serveur/index.ts"
   },
   "keywords": [],
   "author": "",

@@ -56,7 +56,7 @@
     display: flex;
     justify-content: center;
     z-index: 100;
-    width: 285px;
+    width: 100%;
     border-radius: 25px;
     height: 411px;
     transition: all 1s ease-in-out;
@@ -90,8 +90,9 @@
 }
 
 #containerLive {
+    gap: 75px;
     grid-row-gap: 50px;
-    padding-bottom: 50px;
+    padding: 20px 20px 50px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     place-items: center;

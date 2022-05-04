@@ -6,13 +6,13 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&family=Ubuntu:wght@300&display=swap"
           rel="stylesheet">
 
     <link rel="stylesheet" href="../stats/Stats.css">
     <link rel="stylesheet" href="../public/NavbarSubnavbar.css">
-
     <title>Trendify</title>
 </head>
 <body>
@@ -50,22 +50,28 @@
     <label id="containerInputSearch">
         <input id="inputSearch" placeholder="Search Trend..." type="search">
     </label>
-    <span id="containerList">Trend With Trendify</span>
+    <span id="slogan">Trend With Trendify</span>
 </header>
 <nav id="subnav">
     <ul class="containerList">
         <li><a href="/home">Home</a></li>
+        <li><a href="/twitch/trend">Trend</a></li>
         <li><a href="/twitch/stats">Stats</a></li>
         <li><a href="/credit">Credit</a></li>
-<!--        <li><a href="/credit">About</a></li>-->
     </ul>
 </nav>
 
 
-<canvas id="myChart" width="300" height="100" style="margin-top: 50px"></canvas>
+<canvas id="myChart" width="300" height="100" style="margin-top: 25px"></canvas>
 <div id="containerStats"></div>
+
+
+<footer id="footer">
+    <span>Copyright Undefined &#169;</span>
+</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script type="module" src="../stats/Stats.js"></script>
+<script type="module" src="../public/Footer.js"></script>
 </body>
 </html>

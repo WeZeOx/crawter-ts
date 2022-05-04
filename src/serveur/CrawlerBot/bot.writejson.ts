@@ -24,12 +24,16 @@ export const botWriteJson = async (arg: (string | (string | null)[] | null)[][])
   }
   
   const date = new Date()
+  
   let hour: string = date.getHours().toString()
   if (hour.length === 1) hour = '0' + hour
+  
   twitchTrendArray.push({
-    "DateLaunch": `${date.getDate()}\/${date.getMonth() + 1}\/${date.getFullYear()} ${hour}:${date.getMinutes()}:${date.getSeconds()}` })
-  await fs.writeFile('src/data/tendanceTwitch.json', JSON.stringify({ twitchTrendArray }, null, 2), (err) => {
+    "DateLaunch": `${date.getDate()}\/${date.getMonth() + 1}\/${date.getFullYear()} ${hour}:${date.getMinutes()}:${date.getSeconds()}`
+  })
+  fs.writeFile('src/data/tendanceTwitch.json', JSON.stringify({ twitchTrendArray }, null, 2), (err) => {
     if (err) throw err;
   });
+  
   return twitchTrendArray
 }

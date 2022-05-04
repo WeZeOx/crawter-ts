@@ -4,7 +4,7 @@ import { checkIdMiddleware, checkHeader } from "./api.middleware";
 const router = express.Router()
 
 router.get('/', checkHeader, fetchData)
-router.get('/date', fetchDate)
+router.get('/date', checkHeader, fetchDate)
 router.get('/:id', checkIdMiddleware, checkHeader, fetchId)
 
 export default router

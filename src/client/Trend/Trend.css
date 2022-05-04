@@ -73,6 +73,7 @@
     padding-bottom: 80px;
 }
 #containerCard {
+    padding-bottom: 25px;
     grid-column: 2;
     margin-top: 50px;
     display: grid;

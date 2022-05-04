@@ -17,13 +17,12 @@ export type objJson = {
   NameTopStream?: string
 }
 
-
 export const botWriteBdd = async (trend: objJson[]) => {
-  await prisma.trend.deleteMany()
-  
+    await prisma.trend.deleteMany()
+
   trend.map(async (item: objJson, index: number) => {
     if (index === trend.length - 1) return
-    
+
     await prisma.trend.create({
       data: {
         Id: item.Id ?? 404,
@@ -45,5 +44,4 @@ export const botWriteBdd = async (trend: objJson[]) => {
       }
     })
   })
-  return 'DB is write successfully.'
 }

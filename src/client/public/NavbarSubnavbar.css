@@ -51,7 +51,7 @@ header {
     height: 100%;
 }
 
-#containerList {
+#slogan {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -60,7 +60,6 @@ header {
     font-family: 'Raleway', sans-serif;
     letter-spacing: 2px;
     word-spacing: 12px;
-    font-weight: 400;
 }
 
 #containerImg {
@@ -91,4 +90,15 @@ a {
     font-family: 'Raleway', sans-serif;
     word-spacing: 12px;
     font-weight: 400;
+}
+
+#footer {
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    align-items: center;
+    height: 25px;
+    background-color: #4d4646;
 }

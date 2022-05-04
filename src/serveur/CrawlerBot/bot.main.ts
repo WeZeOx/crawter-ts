@@ -75,7 +75,7 @@ export const launchTwitchBot = async () => {
     })
     
     const regexView = /(\s|\b| )spectateurs/g
-    
+    //document.querySelectorAll('.style-scope.ytd-thumbnail.no-transition')
     const newSpecTop = specTop.slice(1, 5).join('.').replaceAll(regexView, '').replaceAll(' ', '')
     const newNameTop = nameTop.slice(1, 5).join('\n')
     const newUrlTopLive = urlTopLive.slice(1, 5).join(',')
@@ -87,11 +87,9 @@ export const launchTwitchBot = async () => {
     return [spec, name, newTag, newSpecTop, newNameTop, img.slice(2, 6).join(','), imgTrendTop, newUrlTopLive, newNameStreamTop]
   })
   const result = await Promise.all(promises)
-  
   const json = await botWriteJson(result)
   
   await botWriteBdd(json)
-  
   
   await browser.close()
 };

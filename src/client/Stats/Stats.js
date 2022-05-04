@@ -15,17 +15,22 @@ const containerStats = document.getElementById('containerStats')
 
 let xAxis = []
 let yAxis = []
-let count = 0
+let countView = 0
+let countFollow = 0
 
 const showStats = () => {
-  count = Math.round(count)
-  let content = `<div class="count">${count}</div>`
+  countView = Math.round(countView)
+  countFollow = Math.round(countFollow)
+
+  let content = `
+    <span class="countView">${countView}K views in the top 30</span>
+    <span class="countView">${countFollow}M follow in the top 30</span>
+   `
 
   let htmlObject = document.createElement('div');
   htmlObject.className = "stats"
   htmlObject.innerHTML = content;
 
-  containerStats.append(htmlObject)
   containerStats.append(htmlObject)
 }
 
@@ -33,18 +38,22 @@ const sortData = () => {
   data.map((item) => {
     const viewCategory = parseFloat(item.Views.slice(0, -1).replaceAll(',', '.'))
     const category = item.Category
+    const followCategory = item.Follow.replaceAll(',', '.')
 
+    if (followCategory.slice(-1) === 'k') countFollow += parseFloat(followCategory.slice(0, -1)) / 1000
+    else countFollow += parseFloat(followCategory.slice(0, -1))
     xAxis.push(category)
 
     if (item.Views.slice(-1) === 'M') {
-      count += viewCategory * 1000
+      countView += viewCategory * 1000
       yAxis.push(viewCategory * 1000)
     } else {
-      count += viewCategory
+      countView += viewCategory
       yAxis.push(viewCategory)
     }
   })
 }
+
 sortData()
 showStats()
 

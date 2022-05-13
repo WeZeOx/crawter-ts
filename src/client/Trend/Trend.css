@@ -45,6 +45,8 @@
 }
 
 .btn a {
+    border: 2px solid white;
+    border-radius: 25px;
     color: white;
     height: 100%;
     padding: 10px;

@@ -10,6 +10,7 @@ const fetchData = () => {
     .then((r) => r.json())
     .catch((err) => console.log(err))
 }
+
 const data = Object.values(await fetchData())
 const containerStats = document.getElementById('containerStats')
 
@@ -53,7 +54,6 @@ const sortData = () => {
     }
   })
 }
-
 sortData()
 showStats()
 

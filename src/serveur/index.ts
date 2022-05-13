@@ -15,9 +15,9 @@ const app = express();
 
 app.use(favicon(path.join(__dirname, 'favicon', 'favicon.svg')))
 app.use(express.json())
+
 app.use("/api", apiRouter)
 app.use("/", webRouter)
-
 app.get('*', (req, res) => res.sendFile('NotFound.html', { root: './src/client/NotFound' }))
 
 app.use(errorHandlerMiddleware)

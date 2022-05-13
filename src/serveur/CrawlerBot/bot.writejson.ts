@@ -16,7 +16,7 @@ export const botWriteJson = async (arg: (string | (string | null)[] | null)[][])
       "SpecTop": arg[idx][3],
       "NameTop": arg[idx][4],
       "ImgTop": arg[idx][5],
-      "TrendTop": arg[idx][6]?.[idx],
+      "ImgTrendTop": arg[idx][6]?.[idx],
       "ImgTopLive": arg[idx][7],
       "NameTopStream": arg[idx][8]
     })

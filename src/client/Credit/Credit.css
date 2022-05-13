@@ -25,6 +25,16 @@
     grid-row: 2;
 }
 
+.logo img {
+    border-radius: 25px;
+    object-fit: cover;
+    transition: transform 500ms ease-out;
+}
+
+.logo img:hover {
+    transform: scale(1.05);
+}
+
 .logo {
     padding-bottom: 50px;
     place-items: center;

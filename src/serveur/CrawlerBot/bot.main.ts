@@ -13,6 +13,7 @@ export const launchTwitchBot = async () => {
   // await page.goto('https://www.twitch.tv/directory?sort=VIEWER_COUNT', { waitUntil: 'networkidle2' });
   
   await page.goto('https://www.twitch.tv/', { waitUntil: 'networkidle2', timeout: 0 });
+  
   await page.waitForTimeout(2000)
   await page.click('button[data-a-target="consent-banner-accept"]')
   await page.click('header a.ScCoreLink-sc-udwpw5-0.ktfxqP.tw-link')
@@ -38,8 +39,11 @@ export const launchTwitchBot = async () => {
   let newUrl = url.filter((item: string, pos: number) => url.indexOf(item) === pos)
   
   const promises = newUrl.map(async (item: string) => {
+    
     const newPage = await browser.newPage();
+    
     await newPage.goto(item, { waitUntil: 'networkidle2', timeout: 0 });
+    
     
     const fetchMultipleData = async (path: string) => {
       return await newPage.$$eval(path, (el: Element[]) => {
@@ -75,13 +79,14 @@ export const launchTwitchBot = async () => {
     })
     
     const regexView = /(\s|\b| )spectateurs/g
-    //document.querySelectorAll('.style-scope.ytd-thumbnail.no-transition')
+
     const newSpecTop = specTop.slice(1, 5).join('.').replaceAll(regexView, '').replaceAll(' ', '')
     const newNameTop = nameTop.slice(1, 5).join('\n')
     const newUrlTopLive = urlTopLive.slice(1, 5).join(',')
     const newNameStreamTop = nameStreamTop.slice(1, 5).join(',')
-    
     const newTag = tag.join(',')
+    
+    await newPage.waitForTimeout(500)
     await newPage.close()
     
     return [spec, name, newTag, newSpecTop, newNameTop, img.slice(2, 6).join(','), imgTrendTop, newUrlTopLive, newNameStreamTop]

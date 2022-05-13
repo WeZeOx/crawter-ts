@@ -20,7 +20,7 @@ const nameLive = data[0].TrendLive[0].NameTop.split('\n')
 const topPage = () => {
   const content = `
     <div id="containerImg"> 
-        <img id="trendImg" src="${data[0].TrendTop})" alt="Trend Image" />
+        <img id="trendImg" src="${data[0].TrendTopImg})" alt="Trend Image" />
     </div>
     <span id="trendName">Name : ${data[0].Category}</span>
  
@@ -42,7 +42,7 @@ topPage()
 const top4Live = () => {
   nameLive.forEach((item, index) => {
     const spec = data[0].TrendLive[0].SpecTop.split('.')[index]
-    const label = data[0].TrendLive[0].Img.split(',')[index]
+    const label = data[0].TrendLive[0].ImgTop.split(',')[index]
     const link = data[0].TrendLive[0].UrlTopLive.split(',')[index]
     const streamer = data[0].TrendLive[0].NameTopLive.split(',')[index]
 
@@ -63,6 +63,7 @@ const top4Live = () => {
     htmlObject.style.backgroundSize = 'cover'
     htmlObject.style.backgroundRepeat = 'no-repeat'
     htmlObject.style.backgroundPosition = 'center center'
+    htmlObject.style.width = 100 + '%';
 
     containerLive.appendChild(htmlObject)
   })

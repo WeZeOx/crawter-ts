@@ -24,7 +24,7 @@ document.getElementById('inputSearch').addEventListener("input", (e) => {
 });
 
 const cardData = data.map((item, index) => {
-  const img = item.TrendTop
+  const img = item.TrendTopImg
   const category = item.Category
 
   const content = `

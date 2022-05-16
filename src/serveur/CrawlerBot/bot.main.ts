@@ -10,17 +10,9 @@ export const launchTwitchBot = async () => {
     defaultViewport: { width: 600, height: 800 }
   });
   const page = await browser.newPage();
-  // await page.goto('https://www.twitch.tv/directory?sort=VIEWER_COUNT', { waitUntil: 'networkidle2' });
+  await page.goto('https://www.twitch.tv/directory?sort=VIEWER_COUNT', { waitUntil: 'networkidle2' });
   
-  await page.goto('https://www.twitch.tv/', { waitUntil: 'networkidle2', timeout: 0 });
-  
-  await page.waitForTimeout(2000)
   await page.click('button[data-a-target="consent-banner-accept"]')
-  await page.click('header a.ScCoreLink-sc-udwpw5-0.ktfxqP.tw-link')
-  
-  await page.waitForSelector('button[data-a-target="browse-sort-menu"]')
-  await page.click('button[data-a-target="browse-sort-menu"]')
-  await page.click('a[data-test-selector="browse-sort-VIEWER_COUNT"]')
   
   await page.waitForTimeout(500)
   
@@ -86,7 +78,7 @@ export const launchTwitchBot = async () => {
     const newNameStreamTop = nameStreamTop.slice(1, 5).join(',')
     const newTag = tag.join(',')
     
-    await newPage.waitForTimeout(500)
+    await newPage.waitForTimeout(1000)
     await newPage.close()
     
     return [spec, name, newTag, newSpecTop, newNameTop, img.slice(2, 6).join(','), imgTrendTop, newUrlTopLive, newNameStreamTop]

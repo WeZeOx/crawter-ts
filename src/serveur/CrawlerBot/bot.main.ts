@@ -78,7 +78,7 @@ export const launchTwitchBot = async () => {
     const newNameStreamTop = nameStreamTop.slice(1, 5).join(',')
     const newTag = tag.join(',')
     
-    await newPage.waitForTimeout(1000)
+    await newPage.waitForTimeout(750)
     await newPage.close()
     
     return [spec, name, newTag, newSpecTop, newNameTop, img.slice(2, 6).join(','), imgTrendTop, newUrlTopLive, newNameStreamTop]
